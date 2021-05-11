@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>City</title>
+</head>
+<link href="city.css">
+<div class="formBackground">
+
+<body style="background-color:#dbe0e8;">
+
+<h1>City</h1>
+<tr th:each="city : ${cities}">
+ID <span th:inline="text"> &nbsp;&nbsp;&nbsp;&nbsp; [[${city.ID}]] </span> <br />
+Name <span th:inline="text"> &nbsp;&nbsp;&nbsp;&nbsp; [[${city.name}]] </span> <br />
+Country Code <span th:inline="text"> &nbsp;&nbsp;&nbsp;&nbsp; [[${city.Country.code}]] </span> <br />
+Country Name <span th:inline="text"> &nbsp;&nbsp;&nbsp;&nbsp; [[${city.Country.name}]] </span> <br />
+District <span th:inline="text"> &nbsp;&nbsp;&nbsp;&nbsp; [[${city.district}]] </span> <br />
+Population <span th:inline="text"> &nbsp;&nbsp;&nbsp;&nbsp; [[${city.population}]] </span> <br />
+Local Weather <span th:inline="text"> &nbsp;&nbsp;&nbsp;&nbsp; [[${city.weather}]] </span> <br />
+
+		</tr>
+
+</body>
+</div>
+</html>
