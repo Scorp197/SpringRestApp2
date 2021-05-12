@@ -1,16 +1,45 @@
-package cst438;
+package cst438.domain;
 
 public class CityWeather {
 	private double temp;
 	private String condition;
+	private long time;
+	private String localTime;
+	public String getLocalTime() {
+		return localTime;
+	}
+
+	public void setLocalTime(String localTime) {
+		this.localTime = localTime;
+	}
+
+	private int timezone;
 	
 	public CityWeather() {
 		
 	}
 	
-	public CityWeather( double temp, String condition) {
+	public CityWeather( double temp, String condition, long time, int timezone) {
 		this.temp = temp;
 		this.condition= condition;
+		this.time = time;
+		this.timezone = timezone;
+	}
+
+	public long getTime() {
+		return time;
+	}
+
+	public void setTime(long time) {
+		this.time = time;
+	}
+
+	public int getTimezone() {
+		return timezone;
+	}
+
+	public void setTimezone(int timezone) {
+		this.timezone = timezone;
 	}
 
 	public double getTemp() {

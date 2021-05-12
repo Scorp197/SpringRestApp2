@@ -1,4 +1,4 @@
-package cst438;
+package cst438.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

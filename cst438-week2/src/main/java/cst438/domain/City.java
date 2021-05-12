@@ -1,4 +1,4 @@
-package cst438;
+package cst438.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -21,7 +21,7 @@ public class City {
 	// that is not read/written to the database
 	
 	@Transient
-	CityWeather weather;
+	TempAndTime weather;
 	
 	@ManyToOne
 	@JoinColumn(name="countrycode", referencedColumnName="code")
@@ -59,11 +59,11 @@ public class City {
 	public void setPopulation(int population) {
 		this.population = population;
 	}
-	public CityWeather getWeather() {
+	public TempAndTime getWeather() {
 		return weather;
 	}
-	public void setWeather(CityWeather weather) {
-		this.weather = weather;
+	public void setWeather(TempAndTime cityWeather) {
+		this.weather = cityWeather;
 	}
 	public Country getCountry() {
 		return country;

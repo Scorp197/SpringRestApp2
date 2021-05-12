@@ -1,4 +1,4 @@
-package cst438;
+package cst438.domain;
 
 import java.util.List;
 
@@ -12,7 +12,4 @@ public interface CityRepository extends JpaRepository<City, Integer> {
 	List<City>findByName(String name);
 
 }
-
-
-
-	
+// Code Review
