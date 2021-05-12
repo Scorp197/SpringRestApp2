@@ -1,4 +1,4 @@
-package cst438;
+package cst438.controllers;
 
 import java.util.List;
 
@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import cst438.City;
-import cst438.CityRepository;
-import cst438.CityWeather;
-import cst438.WeatherService;
+import cst438.domain.City;
+import cst438.domain.CityRepository;
+import cst438.domain.CityWeather;
+import cst438.domain.TempAndTime;
+import cst438.services.CityService;
+import cst438.services.WeatherService;
 
 @RestController
 public class CityRestController {
@@ -24,7 +26,10 @@ public class CityRestController {
 	@Autowired
 	WeatherService weatherService;
 	
-	@GetMapping("/city/{name}")
+	@Autowired
+	CityService cityService;
+	
+	@GetMapping("/api/cities/{name}")
 	public ResponseEntity<City> cityInfo(@PathVariable("name") String name ) {
 		
 		// look up city info from database.  Might be multiple cities with same name.
@@ -40,18 +45,16 @@ public class CityRestController {
 		    City city=cities.get(0);
 		    
 		    // get current weather
-			CityWeather cityWeather = weatherService.getWeather(name);
 			// convert temp from degrees Kelvin to degrees Fahrenheit
-			double tempF = Math.round((cityWeather.getTemp() - 273.15) * 9.0/5.0 + 32.0); 
-			cityWeather.setTemp(tempF);
-			city.setWeather(cityWeather);
+			 TempAndTime cityWeather = cityService.getWeather(name);
+			 city.setWeather(cityWeather);
 			
 			// return 200 status code (OK) and city information in JSON format
 			return new ResponseEntity<City>(city, HttpStatus.OK);
 		}
 	}
 	
-	@DeleteMapping("/city/{name}")
+	@DeleteMapping("/api/city/{name}")
 	public ResponseEntity<City> deleteCity(@PathVariable("name") String name ) {
 		
 		// look up city info from database.  Might be multiple cities with same name.

@@ -1,4 +1,4 @@
-package cst438;
+package cst438.domain;
 
 import java.util.List;
 
